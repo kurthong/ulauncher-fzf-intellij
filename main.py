@@ -203,7 +203,7 @@ class KeywordQueryEventListener(EventListener):
         )
 
         def create_result_item(path_name: str) -> ExtensionSmallResultItem:
-            print("~/.local/bin/idea " + path_name)
+            logger.debug("~/.local/bin/idea " + path_name)
             return ExtensionSmallResultItem(
                 icon="images/sub-icon.png",
                 name=KeywordQueryEventListener._get_display_name(path_name, path_prefix),
