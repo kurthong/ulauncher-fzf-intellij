@@ -10,6 +10,7 @@ from ulauncher.api.client.Extension import Extension
 from ulauncher.api.shared.action.BaseAction import BaseAction
 from ulauncher.api.shared.action.CopyToClipboardAction import CopyToClipboardAction
 from ulauncher.api.shared.action.DoNothingAction import DoNothingAction
+from ulauncher.api.shared.action.RunScriptAction import RunScriptAction
 from ulauncher.api.shared.action.OpenAction import OpenAction
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
 from ulauncher.api.shared.event import KeywordQueryEvent
@@ -203,11 +204,10 @@ class KeywordQueryEventListener(EventListener):
         )
 
         def create_result_item(path_name: str) -> ExtensionSmallResultItem:
-            logger.debug("~/.local/bin/idea " + path_name)
             return ExtensionSmallResultItem(
                 icon="images/sub-icon.png",
                 name=KeywordQueryEventListener._get_display_name(path_name, path_prefix),
-                on_enter=OpenAction("~/.local/bin/idea " + path_name),
+                on_enter=RunScriptAction("idea", path_name),
                 on_alt_enter=KeywordQueryEventListener._get_alt_enter_action(
                     preferences["alt_enter_action"], path_name
                 ),
