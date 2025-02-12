@@ -206,7 +206,7 @@ class KeywordQueryEventListener(EventListener):
             return ExtensionSmallResultItem(
                 icon="images/sub-icon.png",
                 name=KeywordQueryEventListener._get_display_name(path_name, path_prefix),
-                on_enter=OpenAction(path_name),
+                on_enter=OpenAction("idea " + path_name),
                 on_alt_enter=KeywordQueryEventListener._get_alt_enter_action(
                     preferences["alt_enter_action"], path_name
                 ),
